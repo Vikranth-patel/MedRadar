@@ -1,0 +1,132 @@
+{
+    "run_at": "2026-10-31T07:04:06+05:30",
+    "base": "http:\/\/127.0.0.1:8080\/",
+    "results": [
+        [
+            "T01",
+            "Same product name, different strength \u2192 separate, clearly labelled products",
+            "PASS",
+            ""
+        ],
+        [
+            "T02",
+            "Location permission denied \u2192 manual locality \/ PIN search still works",
+            "PASS",
+            ""
+        ],
+        [
+            "T03",
+            "Old confirmation time \u2192 stale warning, never an invented out-of-stock status",
+            "PASS",
+            ""
+        ],
+        [
+            "T04",
+            "Edit pharmacy profile \u2192 stock confirmation times unchanged",
+            "PASS",
+            ""
+        ],
+        [
+            "T05",
+            "Pending \/ suspended pharmacy has listings \u2192 no public visibility",
+            "PASS",
+            ""
+        ],
+        [
+            "T06",
+            "Pharmacy A edits Pharmacy B inventory \u2192 rejected, no database change",
+            "PASS",
+            ""
+        ],
+        [
+            "T07",
+            "Visitor calls protected write endpoints \u2192 rejected (direct unauthorized calls)",
+            "PASS",
+            ""
+        ],
+        [
+            "T08",
+            "Request expiry passes without cleanup \u2192 read\/update logic treats it as expired",
+            "PASS",
+            ""
+        ],
+        [
+            "T09",
+            "No medicine matches \u2192 honest empty state and no substitute claim",
+            "PASS",
+            ""
+        ],
+        [
+            "T10",
+            "Pharmacy confirms availability \u2192 response time shown; no reservation guarantee",
+            "PASS",
+            ""
+        ],
+        [
+            "T11",
+            "Duplicate inventory insertion \u2192 constraint prevents a second pharmacy\/product row",
+            "PASS",
+            ""
+        ],
+        [
+            "T12",
+            "Invalid \/ hostile input \u2192 validated or safely displayed; no raw database error",
+            "PASS",
+            ""
+        ],
+        [
+            "T13",
+            "Unrelated user accesses request \u2192 private request details are not exposed",
+            "PASS",
+            ""
+        ],
+        [
+            "T14",
+            "Catalogue entry archived \u2192 historical records remain interpretable",
+            "PASS",
+            ""
+        ],
+        [
+            "W01",
+            "Full demonstration: register \u2192 admin approves \u2192 list \u2192 confirm \u2192 visitor searches \u2192 request \u2192 pharmacy responds \u2192 unauthorized edit rejected",
+            "PASS",
+            ""
+        ],
+        [
+            "W02",
+            "Stock rules: only explicit actions refresh confirmation; reactivate keeps old time; status change confirms",
+            "PASS",
+            ""
+        ],
+        [
+            "W03",
+            "CSRF: state-changing calls without a valid token are rejected",
+            "PASS",
+            ""
+        ],
+        [
+            "W04",
+            "Login rate limiting, generic errors, session cookie flags",
+            "PASS",
+            ""
+        ],
+        [
+            "W05",
+            "Admin workflow rules: transitions, mandatory reasons, catalogue duplicates, report review",
+            "PASS",
+            ""
+        ],
+        [
+            "W06",
+            "Private request rules: duplicate pending blocked, rate limit, requests for hidden listings refused",
+            "PASS",
+            ""
+        ],
+        [
+            "W07",
+            "Retention script deletes only old data (expiry does not depend on it)",
+            "PASS",
+            ""
+        ]
+    ]
+}
