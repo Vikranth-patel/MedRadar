@@ -143,4 +143,9 @@ Suggested history: schema/seed → bootstrap + auth → catalogue + inventory �
 Deploy to any PHP 8.1+ / MySQL 5.7+/MariaDB 10.4+ host: upload the folder, create `.env`, import the SQL, schedule `php cron/purge.php` daily, serve over **HTTPS** (the session cookie becomes `Secure` automatically).
 
 ## 12. Protecting files on Apache
-`.htaccess` files block direct web access to `.env`, `*.sql`, `config.php`, `*.md`, `inc/`, `database/`, `cron/` and `tests/`. Keep them when deploying (Apache needs `AllowOverride All` for the site, which XAMPP enables by default). On nginx, add equivalent `deny all` rules.
+A root `.htaccess` blocks the secret `.env` file, and small `.htaccess` files in `inc/`, `database/`, `cron/` and `tests/` block all web access to those folders (PHP can still include them). Keep them when deploying (Apache needs `AllowOverride All` for the site, which XAMPP enables by default). Check: `http://localhost/medicine-finder/.env` must show **Forbidden**. On nginx, add equivalent `deny all` rules.
+**If the whole site shows “Forbidden”:** look at the last line of `C:\xampp\apache\logs\error.log`. If a root `.htaccess` is the cause, rename it to `.htaccess.off` — the site works without it, but then protect `.env` another way (e.g. keep real secrets only in server environment variables).
+
+## 13. Hero background video
+The home-page hero plays one muted, looping video: `assets/hero-video.mp4` (about 9 s, 1280×720, no audio track, ~1.2 MB), with `assets/hero-poster.jpg` as its first frame. `js/hero.js` loads it lazily, fades it in over the photo, and **skips it** for visitors with “reduce motion” or Data Saver turned on (they see the still photo). There is a Pause/Play button; the video also pauses when the hero is off-screen or the tab is hidden.
+**To change the video:** replace `assets/hero-video.mp4` (muted, ~1280×720, H.264, ideally under 3 MB) and replace `assets/hero-poster.jpg` with a frame from it. No code change is needed.

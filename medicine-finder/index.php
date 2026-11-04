@@ -13,6 +13,13 @@ page_nav('public');
     <main>
         <!-- ================= HERO + SEARCH ================= -->
         <section class="hero" id="top-search">
+            <!-- Background video (decorative). The photo behind it is the fallback / poster. -->
+            <div class="hero-media" aria-hidden="true">
+                <video id="hero-video" muted loop playsinline preload="none" poster="assets/hero-poster.jpg" data-src="assets/hero-video.mp4"></video>
+            </div>
+            <button type="button" class="hero-video-toggle hidden" id="hero-video-toggle" aria-pressed="false" aria-label="Pause background video">
+                <span class="hv-icon" aria-hidden="true">❚❚</span> <span class="hv-text">Pause video</span>
+            </button>
             <div class="container">
                 <div class="hero-inner">
                     <div class="hero-badge"><span class="pulse-dot"></span> Pharmacy-reported stock · No sign-up needed</div>
@@ -161,4 +168,4 @@ page_nav('public');
             </div></div>
         </section>
     </main>
-<?php request_dialog(); page_foot(['js/public.js', 'js/search.js']); ?>
+<?php request_dialog(); page_foot(['js/hero.js', 'js/public.js', 'js/search.js']); ?>
